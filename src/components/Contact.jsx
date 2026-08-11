@@ -1,44 +1,7 @@
-import { useState } from "react";
-import { Camera, MapPin, Phone, Send } from "lucide-react";
+import { Camera, MapPin, Phone } from "lucide-react";
 import contacto from "../data/contacto";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    nombre: "",
-    email: "",
-    mensaje: "",
-  });
-
-  const [enviado, setEnviado] = useState(false);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormData((previousData) => ({
-      ...previousData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Por ahora solo simulamos el envío.
-    console.log("Consulta enviada:", formData);
-
-    setEnviado(true);
-
-    setFormData({
-      nombre: "",
-      email: "",
-      mensaje: "",
-    });
-
-    setTimeout(() => {
-      setEnviado(false);
-    }, 4000);
-  };
-
   return (
     <section
       id="contacto"
@@ -62,12 +25,10 @@ function Contact() {
           </p>
         </div>
 
-        {/* Contacto y formulario */}
-        <div className="mt-12 grid grid-cols-1 gap-8 lg:mt-16 lg:grid-cols-2 lg:gap-12">
-
-          {/* Datos de contacto */}
+        {/* Datos de contacto */}
+        <div className="mx-auto mt-12 max-w-3xl lg:mt-16">
           <div
-            data-aos="fade-right"
+            data-aos="fade-up"
             className="rounded-[32px] bg-[var(--sage-dark)] p-7 text-[var(--cream)] shadow-xl sm:p-10"
           >
             <h3 className="text-2xl font-semibold">
@@ -163,88 +124,6 @@ function Contact() {
 
             </div>
           </div>
-
-          {/* Formulario */}
-          <form
-            data-aos="fade-left"
-            onSubmit={handleSubmit}
-            className="rounded-[32px] bg-white p-7 shadow-lg sm:p-10"
-          >
-            <div>
-              <label
-                htmlFor="nombre"
-                className="block font-medium text-[var(--text)]"
-              >
-                Nombre
-              </label>
-
-              <input
-                id="nombre"
-                name="nombre"
-                type="text"
-                value={formData.nombre}
-                onChange={handleChange}
-                required
-                placeholder="Tu nombre"
-                className="mt-3 w-full rounded-2xl border border-gray-200 bg-[#FAFAF8] px-5 py-4 outline-none transition focus:border-[var(--sage)] focus:ring-4 focus:ring-[var(--sage-light)]/20"
-              />
-            </div>
-
-            <div className="mt-6">
-              <label
-                htmlFor="email"
-                className="block font-medium text-[var(--text)]"
-              >
-                Email
-              </label>
-
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                placeholder="tunombre@email.com"
-                className="mt-3 w-full rounded-2xl border border-gray-200 bg-[#FAFAF8] px-5 py-4 outline-none transition focus:border-[var(--sage)] focus:ring-4 focus:ring-[var(--sage-light)]/20"
-              />
-            </div>
-
-            <div className="mt-6">
-              <label
-                htmlFor="mensaje"
-                className="block font-medium text-[var(--text)]"
-              >
-                Mensaje
-              </label>
-
-              <textarea
-                id="mensaje"
-                name="mensaje"
-                value={formData.mensaje}
-                onChange={handleChange}
-                required
-                rows={5}
-                placeholder="Contanos en qué actividad estás interesado..."
-                className="mt-3 w-full resize-none rounded-2xl border border-gray-200 bg-[#FAFAF8] px-5 py-4 outline-none transition focus:border-[var(--sage)] focus:ring-4 focus:ring-[var(--sage-light)]/20"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--sage)] px-7 py-4 font-medium text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--sage-dark)] hover:shadow-xl"
-            >
-              <Send size={19} />
-              Enviar consulta
-            </button>
-
-            {enviado && (
-              <p className="mt-5 rounded-2xl bg-green-50 px-5 py-4 text-center font-medium text-green-700">
-                ¡Gracias! Tu consulta fue registrada.
-              </p>
-            )}
-          </form>
-
         </div>
 
         {/* Mapa */}

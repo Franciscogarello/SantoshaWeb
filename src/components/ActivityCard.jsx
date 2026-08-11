@@ -1,6 +1,5 @@
 import {
   Leaf,
-  MessageCircle,
   User,
   Calendar,
   Clock,
@@ -10,7 +9,6 @@ function ActivityCard({
   disciplina,
   profesor,
   descripcion,
-  whatsapp,
   dias = "",
   horario = "",
   delay = 0,
@@ -94,43 +92,6 @@ function ActivityCard({
 
       </div>
 
-      {/* Empuja el botón hacia abajo */}
-      <div className="flex-1" />
-
-      {/* Botón */}
-      {whatsapp ? (
-        <a
-          href={whatsapp}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            mt-8
-            inline-flex
-            w-fit
-            items-center
-            gap-2
-            rounded-full
-            bg-[var(--sage)]
-            px-6
-            py-3
-            font-medium
-            text-white
-            transition-all
-            duration-300
-            hover:scale-105
-            hover:bg-[var(--sage-dark)]
-          "
-        >
-          <MessageCircle size={18} />
-          Comenzá tu práctica
-        </a>
-      ) : (
-        <div className="mt-8">
-          <span className="inline-flex rounded-full bg-gray-100 px-5 py-3 text-sm font-medium text-gray-500">
-            Contacto próximamente
-          </span>
-        </div>
-      )}
     </div>
   );
 }

@@ -8,7 +8,6 @@ import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WhatsappButton from "./components/WhatsappButton";
-import Testimonials from "./components/Testimonials";
 
 import { useEffect } from "react";
 import AOS from "aos";
@@ -33,7 +32,6 @@ function App() {
       <Features />
       <Activities />
       <Gallery />
-      <Testimonials />
       <Contact />
       <Footer />
       <WhatsappButton />
