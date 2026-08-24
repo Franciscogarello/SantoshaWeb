@@ -12,33 +12,49 @@ const actividades = [
     descripcion:
       "Una práctica que une movimiento, respiración y conciencia corporal.",
     dias: "Martes y viernes",
-    horario: "",
-    whatsapp: crearWhatsApp("3424352612", "Hatha Yoga", "Viviana"),
+    horario: "08:15",
+    whatsapp: crearWhatsApp(
+      "3424352612",
+      "Hatha Yoga",
+      "Viviana"
+    ),
   },
+
   {
     disciplina: "Hatha Yoga",
     categoria: "Yoga",
     profesor: "Agostina",
     descripcion:
       "Una práctica para conectar con el cuerpo, la respiración y encontrar equilibrio.",
-    dias: "Resto de los días",
-    horario: "",
-    whatsapp: crearWhatsApp("3425140926", "Hatha Yoga", "Agostina"),
+    horarios: [
+      "Lunes y miércoles · 10:30",
+      "Lunes y miércoles · 14:30",
+      "Lunes y jueves · 19:00",
+    ],
+    whatsapp: crearWhatsApp(
+      "3425140926",
+      "Hatha Yoga",
+      "Agostina"
+    ),
   },
+
   {
     disciplina: "Yoga adultos mayores",
     categoria: "Yoga",
     profesor: "Andrea y Mariela",
     descripcion:
       "Una práctica adaptada para favorecer la movilidad, el equilibrio y el bienestar.",
-    dias: "",
-    horario: "",
+    horarios: [
+      "Lunes y miércoles · 16:30",
+      "Martes y jueves · 10:00",
+    ],
     whatsapp: crearWhatsApp(
       "3424084322",
       "Yoga adultos mayores",
       "Andrea y Mariela"
     ),
   },
+
   {
     disciplina: "Gimnasia integral",
     categoria: "Movimiento",
@@ -46,33 +62,40 @@ const actividades = [
     descripcion:
       "Movimiento y ejercicio integral para fortalecer el cuerpo y mejorar el bienestar.",
     dias: "Viernes",
-    horario: "",
+    horario: "10:00",
     whatsapp: crearWhatsApp(
       "3425058282",
       "Gimnasia integral",
       "Adriana"
     ),
   },
+
   {
     disciplina: "Pilates Mat",
     categoria: "Movimiento",
-    profesor: "",
+    profesor: "Adriana",
     descripcion:
       "Una práctica enfocada en fortalecer, mejorar la postura y desarrollar conciencia corporal.",
     dias: "Martes y jueves",
     horario: "14:30",
     whatsapp: "",
   },
+
   {
     disciplina: "Tai Chi",
     categoria: "Movimiento",
     profesor: "Damián",
     descripcion:
       "Movimiento consciente, respiración y equilibrio a través de una práctica suave y fluida.",
-    dias: "",
-    horario: "",
-    whatsapp: crearWhatsApp("3424083695", "Tai Chi", "Damián"),
+    dias: "Martes y viernes",
+    horario: "16:15",
+    whatsapp: crearWhatsApp(
+      "3424083695",
+      "Tai Chi",
+      "Damián"
+    ),
   },
+
   {
     disciplina: "Biodanza",
     categoria: "Biodanza",
@@ -80,45 +103,52 @@ const actividades = [
     descripcion:
       "Un espacio de encuentro, movimiento y expresión para conectar con uno mismo y con los demás.",
     dias: "Miércoles",
-    horario: "",
+    horario: "19:45",
     whatsapp: crearWhatsApp(
       "3424494977",
       "Biodanza",
       "Milagros y Raquel"
     ),
   },
+
   {
     disciplina: "Biodanza",
     categoria: "Biodanza",
     profesor: "Graciela",
     descripcion:
       "Una experiencia de movimiento y expresión que invita a conectar con las emociones y el bienestar.",
-    dias: "Martes",
-    horario: "",
-    whatsapp: crearWhatsApp("3424081106", "Biodanza", "Graciela"),
+    dias: "Miércoles",
+    horario: "19:45",
+    whatsapp: crearWhatsApp(
+      "3424081106",
+      "Biodanza",
+      "Graciela"
+    ),
   },
+
   {
-    disciplina: "Preparación para el parto",
+    disciplina: "Preparación para el nacimiento",
     categoria: "Preparación",
     profesor: "Dina y otras",
     descripcion:
-      "Un espacio de acompañamiento y preparación consciente para transitar el embarazo y el parto.",
-    dias: "",
-    horario: "",
+      "Un espacio de acompañamiento y preparación consciente para transitar el embarazo y el nacimiento.",
+    dias: "Viernes",
+    horario: "18:30",
     whatsapp: crearWhatsApp(
       "3426142083",
-      "Preparación para el parto",
+      "Preparación para el nacimiento",
       "Dina"
     ),
   },
+
   {
     disciplina: "Yoga niños",
     categoria: "Yoga",
     profesor: "Vanina y María Laura",
     descripcion:
       "Una propuesta lúdica para que los más chicos exploren el movimiento, la respiración y la calma.",
-    dias: "",
-    horario: "",
+    dias: "Miércoles",
+    horario: "18:15",
     whatsapp: crearWhatsApp(
       "3425053004",
       "Yoga niños",

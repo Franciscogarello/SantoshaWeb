@@ -3,14 +3,17 @@ import {
   User,
   Calendar,
   Clock,
+  MessageCircle,
 } from "lucide-react";
 
 function ActivityCard({
   disciplina,
   profesor,
   descripcion,
+  whatsapp,
   dias = "",
   horario = "",
+  horarios = [],
   delay = 0,
 }) {
   return (
@@ -47,7 +50,7 @@ function ActivityCard({
         />
       </div>
 
-      {/* Título */}
+      {/* Disciplina */}
       <h3 className="text-2xl font-semibold text-[var(--text)]">
         {disciplina}
       </h3>
@@ -60,6 +63,7 @@ function ActivityCard({
       {/* Información */}
       <div className="mt-8 space-y-4">
 
+        {/* Profesor */}
         {profesor && (
           <div className="flex items-center gap-3 text-[#4D5C4D]">
             <User
@@ -70,6 +74,7 @@ function ActivityCard({
           </div>
         )}
 
+        {/* Días */}
         {dias && (
           <div className="flex items-center gap-3 text-[#4D5C4D]">
             <Calendar
@@ -80,6 +85,7 @@ function ActivityCard({
           </div>
         )}
 
+        {/* Horario simple */}
         {horario && (
           <div className="flex items-center gap-3 text-[#4D5C4D]">
             <Clock
@@ -90,8 +96,60 @@ function ActivityCard({
           </div>
         )}
 
+        {/* Varios horarios */}
+        {horarios.length > 0 && (
+          <div className="space-y-3">
+            {horarios.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-3 text-[#4D5C4D]"
+              >
+                <Clock
+                  size={18}
+                  className="shrink-0 text-[var(--sage)]"
+                />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
       </div>
 
+      {/* Mantiene todos los botones alineados abajo */}
+      <div className="flex-1" />
+
+      {/* WhatsApp */}
+      {whatsapp && (
+        <a
+          href={whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            mt-8
+            inline-flex
+            w-fit
+            items-center
+            justify-center
+            gap-2
+            rounded-full
+            bg-[var(--sage-dark)]
+            px-6
+            py-3
+            font-semibold
+            text-white
+            shadow-md
+            transition-all
+            duration-300
+            hover:-translate-y-1
+            hover:bg-[#405847]
+            hover:shadow-lg
+          "
+        >
+          <MessageCircle size={19} />
+          Consultar por WhatsApp
+        </a>
+      )}
     </div>
   );
 }
