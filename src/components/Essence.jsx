@@ -19,9 +19,9 @@ function Essence() {
           </h2>
 
           <p className="max-w-3xl mx-auto mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-gray-600 leading-7 sm:leading-8 md:leading-9">
-            En Santosha creemos que el bienestar comienza cuando encontramos
-            un momento para detenernos, respirar y escucharnos. Cada práctica
-            es una invitación a conectar con el cuerpo, la mente y la calma.
+            Somos Agostina y Mariela, creamos Santosha pensando en su significado, 
+            que nos invita a vivir en un estado de aceptación y contentamiento de la realidad tal y como es.
+            Cuando las personas cruzan la puerta, nuestro deseo es que experimenten una pausa en sus rutinas para el cuidado del cuerpo, mente y espíritu.
           </p>
 
         </div>

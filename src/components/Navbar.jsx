@@ -5,6 +5,7 @@ import logo from "../assets/logo.png";
 const links = [
   { id: "inicio", label: "Inicio" },
   { id: "nosotros", label: "Nosotros" },
+  { id: "consultorios", label: "Consultorios" },
   { id: "actividades", label: "Actividades" },
   { id: "espacio", label: "Espacio" },
   { id: "contacto", label: "Contacto" },
@@ -17,29 +18,29 @@ function Navbar() {
   const [navbarVisible, setNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-useEffect(() => {
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
 
-    setScrolled(currentScrollY > 40);
+      setScrolled(currentScrollY > 40);
 
-    if (menuOpen || currentScrollY < 80) {
-      setNavbarVisible(true);
-    } else if (currentScrollY > lastScrollY) {
-      setNavbarVisible(false);
-    } else {
-      setNavbarVisible(true);
-    }
+      if (menuOpen || currentScrollY < 80) {
+        setNavbarVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setNavbarVisible(false);
+      } else {
+        setNavbarVisible(true);
+      }
 
-    setLastScrollY(currentScrollY);
-  };
+      setLastScrollY(currentScrollY);
+    };
 
-  window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, [lastScrollY, menuOpen]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY, menuOpen]);
 
   useEffect(() => {
     const handleActiveSection = () => {
@@ -71,18 +72,19 @@ useEffect(() => {
   }, []);
 
   return (
-<nav
-  className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${
-    navbarVisible
-      ? "translate-y-0 opacity-100"
-      : "-translate-y-full opacity-0"
-  } ${
-    scrolled
-      ? "bg-white/80 shadow-lg backdrop-blur-xl"
-      : "bg-transparent"
-  }`}
->
+    <nav
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${
+        navbarVisible
+          ? "translate-y-0 opacity-100"
+          : "-translate-y-full opacity-0"
+      } ${
+        scrolled
+          ? "bg-white/80 shadow-lg backdrop-blur-xl"
+          : "bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex w-full max-w-[1450px] items-center justify-between px-5 py-4 sm:px-8 sm:py-6">
+
         {/* Logo */}
         <a href="#inicio" aria-label="Ir al inicio">
           <img
@@ -96,7 +98,7 @@ useEffect(() => {
 
         {/* Menú escritorio */}
         <ul
-          className={`hidden items-center gap-8 rounded-full px-8 py-3 font-medium transition-all duration-500 md:flex ${
+          className={`hidden items-center gap-7 rounded-full px-8 py-3 font-medium transition-all duration-500 md:flex ${
             scrolled
               ? "bg-transparent"
               : "border border-white/30 bg-black/25 shadow-lg backdrop-blur-md"

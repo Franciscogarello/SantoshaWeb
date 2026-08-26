@@ -8,6 +8,7 @@ import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WhatsappButton from "./components/WhatsappButton";
+import Consultorios from "./components/Consultorios";
 
 import { useEffect } from "react";
 import AOS from "aos";
@@ -31,6 +32,7 @@ function App() {
       <Essence />
       <Features />
       <Activities />
+      <Consultorios />
       <Gallery />
       <Contact />
       <Footer />

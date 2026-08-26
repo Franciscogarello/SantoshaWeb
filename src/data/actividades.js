@@ -10,7 +10,7 @@ const actividades = [
     categoria: "Yoga",
     profesor: "Viviana",
     descripcion:
-      "Una práctica que une movimiento, respiración y conciencia corporal.",
+      "Una práctica que busca el equilibrio entre cuerpo, respiración y mente a través de posturas, respiración consciente y relajación.",
     dias: "Martes y viernes",
     horario: "08:15",
     whatsapp: crearWhatsApp(
@@ -21,11 +21,11 @@ const actividades = [
   },
 
   {
-    disciplina: "Hatha Yoga",
+    disciplina: "Hatha-Ashtanga Yoga",
     categoria: "Yoga",
     profesor: "Agostina",
     descripcion:
-      "Una práctica para conectar con el cuerpo, la respiración y encontrar equilibrio.",
+      "Una práctica inspirada en la tradición de Krishnamacharya que adapta las herramientas del yoga a cada persona, integrando cuerpo, respiración y mente.",
     horarios: [
       "Lunes y miércoles · 10:30",
       "Lunes y miércoles · 14:30",
@@ -33,7 +33,7 @@ const actividades = [
     ],
     whatsapp: crearWhatsApp(
       "3425140926",
-      "Hatha Yoga",
+      "Hatha-Ashtanga Yoga",
       "Agostina"
     ),
   },
@@ -43,7 +43,7 @@ const actividades = [
     categoria: "Yoga",
     profesor: "Andrea y Mariela",
     descripcion:
-      "Una práctica adaptada para favorecer la movilidad, el equilibrio y el bienestar.",
+      "Una práctica accesible y adaptada que, mediante movimientos suaves y diferentes elementos, favorece la flexibilidad, movilidad, equilibrio, fuerza y coordinación.",
     horarios: [
       "Lunes y miércoles · 16:30",
       "Martes y jueves · 10:00",
@@ -56,11 +56,41 @@ const actividades = [
   },
 
   {
+    disciplina: "Yoga niños",
+    categoria: "Yoga",
+    profesor: "Vanina y María Laura",
+    descripcion:
+      "Una invitación a relajarse y divertirse mientras desarrollamos fuerza, coordinación, flexibilidad, equilibrio, conciencia corporal y emocional y autoconfianza.",
+    dias: "Miércoles",
+    horario: "18:15",
+    whatsapp: crearWhatsApp(
+      "3425053004",
+      "Yoga niños",
+      "Vanina y María Laura"
+    ),
+  },
+
+  {
+    disciplina: "Tai Chi Chuan - Chi Kung",
+    categoria: "Movimiento",
+    profesor: "Damián",
+    descripcion:
+      "Disciplinas milenarias chinas que integran el trabajo interno y físico, favoreciendo el movimiento, el equilibrio y la conexión con nuestro interior.",
+    dias: "Martes y viernes",
+    horario: "16:15",
+    whatsapp: crearWhatsApp(
+      "3424083695",
+      "Tai Chi Chuan - Chi Kung",
+      "Damián"
+    ),
+  },
+
+  {
     disciplina: "Gimnasia integral",
     categoria: "Movimiento",
     profesor: "Adriana",
     descripcion:
-      "Movimiento y ejercicio integral para fortalecer el cuerpo y mejorar el bienestar.",
+      "Una actividad que combina movimiento, fuerza y flexibilidad con técnicas de Pilates, enfocada en la armonía de las posturas y el bienestar general.",
     dias: "Viernes",
     horario: "10:00",
     whatsapp: crearWhatsApp(
@@ -75,55 +105,10 @@ const actividades = [
     categoria: "Movimiento",
     profesor: "Adriana",
     descripcion:
-      "Una práctica enfocada en fortalecer, mejorar la postura y desarrollar conciencia corporal.",
+      "Una práctica enfocada en fortalecer el cuerpo, mejorar la postura y desarrollar mayor conciencia corporal.",
     dias: "Martes y jueves",
     horario: "14:30",
     whatsapp: "",
-  },
-
-  {
-    disciplina: "Tai Chi",
-    categoria: "Movimiento",
-    profesor: "Damián",
-    descripcion:
-      "Movimiento consciente, respiración y equilibrio a través de una práctica suave y fluida.",
-    dias: "Martes y viernes",
-    horario: "16:15",
-    whatsapp: crearWhatsApp(
-      "3424083695",
-      "Tai Chi",
-      "Damián"
-    ),
-  },
-
-  {
-    disciplina: "Biodanza",
-    categoria: "Biodanza",
-    profesor: "Milagros y Raquel",
-    descripcion:
-      "Un espacio de encuentro, movimiento y expresión para conectar con uno mismo y con los demás.",
-    dias: "Miércoles",
-    horario: "19:45",
-    whatsapp: crearWhatsApp(
-      "3424494977",
-      "Biodanza",
-      "Milagros y Raquel"
-    ),
-  },
-
-  {
-    disciplina: "Biodanza",
-    categoria: "Biodanza",
-    profesor: "Graciela",
-    descripcion:
-      "Una experiencia de movimiento y expresión que invita a conectar con las emociones y el bienestar.",
-    dias: "Miércoles",
-    horario: "19:45",
-    whatsapp: crearWhatsApp(
-      "3424081106",
-      "Biodanza",
-      "Graciela"
-    ),
   },
 
   {
@@ -131,7 +116,7 @@ const actividades = [
     categoria: "Preparación",
     profesor: "Dina y otras",
     descripcion:
-      "Un espacio de acompañamiento y preparación consciente para transitar el embarazo y el nacimiento.",
+      "Un espacio para mujeres y parejas desde las 28 semanas de gestación, pensado para sentirse acompañadas, compartir el proceso y prepararse para el nacimiento.",
     dias: "Viernes",
     horario: "18:30",
     whatsapp: crearWhatsApp(
@@ -142,17 +127,32 @@ const actividades = [
   },
 
   {
-    disciplina: "Yoga niños",
-    categoria: "Yoga",
-    profesor: "Vanina y María Laura",
+    disciplina: "Biodanza",
+    categoria: "Biodanza",
+    profesor: "Graciela",
     descripcion:
-      "Una propuesta lúdica para que los más chicos exploren el movimiento, la respiración y la calma.",
+      "Una práctica grupal que invita a percibirnos y vincularnos de una manera más profunda, buscando el equilibrio entre lo individual y lo colectivo. No requiere saber bailar.",
     dias: "Miércoles",
-    horario: "18:15",
+    horario: "19:45",
     whatsapp: crearWhatsApp(
-      "3425053004",
-      "Yoga niños",
-      "Vanina y María Laura"
+      "3424081106",
+      "Biodanza",
+      "Graciela"
+    ),
+  },
+
+  {
+    disciplina: "Biodanza",
+    categoria: "Biodanza",
+    profesor: "Milagros y Raquel",
+    descripcion:
+      "Una propuesta que integra ciencia y arte para potenciar nuestra identidad, despertar la alegría y el placer de movernos y fortalecer la vinculación con los demás.",
+    dias: "Miércoles",
+    horario: "19:45",
+    whatsapp: crearWhatsApp(
+      "3424494977",
+      "Biodanza",
+      "Milagros y Raquel"
     ),
   },
 ];

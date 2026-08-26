@@ -27,16 +27,15 @@ function Hero() {
           </span>
 
           <h1 className="mt-5 text-[2.35rem] font-semibold leading-[1.08] text-white sm:text-5xl md:text-7xl">
-            Respirá.
             <span className="block">
-              Encontrá tu equilibrio.
+              RESPIRA CONSCIENTEMENTE Y CULTIVA TU PRESENCIA
             </span>
           </h1>
 
           <p className="mt-6 max-w-lg text-base leading-7 text-white/90 sm:text-lg sm:leading-8 md:text-xl">
-            Un espacio pensado para conectar con vos mismo, respirar
-            profundamente y transformar cada práctica en un momento de
-            bienestar.
+            Un espacio pensado para conectar con vos 
+            misma/o, respirar profundamente y transformar 
+            cada práctica en un momento de bienestar.
           </p>
 
           <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4 sm:mt-10">
