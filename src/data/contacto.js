@@ -7,7 +7,7 @@ const contacto = {
   instagram: "https://www.instagram.com/santosha.sf/",
   instagramVisible: "@santosha.sf",
 
-  direccion: "Llerena 2474, Santa Fe, Santa Fe",
+  direccion: "Llerena 2476, Santa Fe, Santa Fe",
 };
 
 export default contacto;
