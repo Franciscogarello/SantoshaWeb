@@ -14,19 +14,15 @@ function Features() {
             </span>
 
             <h2 className="mt-5 text-4xl sm:text-5xl font-semibold leading-tight text-[var(--text)]">
-              Un espacio creado para acompañarte.
+              Un espacio de encuentro, calma y alegría.
             </h2>
 
             <p className="mt-7 text-base sm:text-lg leading-8 text-gray-600">
-              Santosha nace como un lugar de encuentro, calma y movimiento
-              consciente. Un espacio pensado para que puedas detenerte,
-              respirar y reconectar con vos mismo.
+              Te acompañamos a través del yoga y otras disciplinas, talleres y profesionales,  
+              para aportar a tu vida una pausa consciente de cuidado y 
+              crecimiento individual y colectivo
             </p>
 
-            <p className="mt-5 text-base sm:text-lg leading-8 text-gray-600">
-              Cada práctica busca respetar tus tiempos y acompañarte en el
-              camino hacia un mayor bienestar físico, mental y emocional.
-            </p>
           </div>
 
           {/* Frase destacada */}

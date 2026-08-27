@@ -101,17 +101,6 @@ const actividades = [
   },
 
   {
-    disciplina: "Pilates Mat",
-    categoria: "Movimiento",
-    profesor: "Adriana",
-    descripcion:
-      "Una práctica enfocada en fortalecer el cuerpo, mejorar la postura y desarrollar mayor conciencia corporal.",
-    dias: "Martes y jueves",
-    horario: "14:30",
-    whatsapp: "",
-  },
-
-  {
     disciplina: "Preparación para el nacimiento",
     categoria: "Preparación",
     profesor: "Dina y otras",

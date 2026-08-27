@@ -19,8 +19,8 @@ function Essence() {
           </h2>
 
           <p className="max-w-3xl mx-auto mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-gray-600 leading-7 sm:leading-8 md:leading-9">
-            Somos Agostina y Mariela, creamos Santosha pensando en su significado, 
-            que nos invita a vivir en un estado de aceptación y contentamiento de la realidad tal y como es.
+            Somos Agostina y Mariela, creamos Santosha pensando en su significado, el cual nos invita a
+            vivir en un estado de aceptación y contentamiento de la realidad tal y como es.
             Cuando las personas cruzan la puerta, nuestro deseo es que experimenten una pausa en sus rutinas para el cuidado del cuerpo, mente y espíritu.
           </p>
 
@@ -39,7 +39,7 @@ function Essence() {
             </h3>
 
             <p className="text-gray-600 mt-4 leading-7">
-              Un espacio pensado para cuidar cuerpo, mente y emociones.
+              Pensamos en el cuidado de tu cuerpo, mente y emociones.
             </p>
           </div>
 
@@ -54,7 +54,7 @@ function Essence() {
             </h3>
 
             <p className="text-gray-600 mt-4 leading-7">
-              Personas que comparten un camino de crecimiento y respeto.
+              Personas que comparten un camino de crecimiento basado en el amor y el respeto.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ function Essence() {
             </h3>
 
             <p className="text-gray-600 mt-4 leading-7">
-              Cada encuentro busca ayudarte a encontrar tu propio ritmo.
+              Cada encuentro te permite conocerte y encontrar tu propio ritmo.
             </p>
           </div>
 
