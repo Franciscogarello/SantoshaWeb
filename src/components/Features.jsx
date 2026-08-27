@@ -20,7 +20,7 @@ function Features() {
             <p className="mt-7 text-base sm:text-lg leading-8 text-gray-600">
               Te acompañamos a través del yoga y otras disciplinas, talleres y profesionales,  
               para aportar a tu vida una pausa consciente de cuidado y 
-              crecimiento individual y colectivo
+              crecimiento individual-colectivo.
             </p>
 
           </div>

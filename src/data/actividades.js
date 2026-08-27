@@ -25,7 +25,7 @@ const actividades = [
     categoria: "Yoga",
     profesor: "Agostina",
     descripcion:
-      "Una práctica inspirada en la tradición de Krishnamacharya que adapta las herramientas del yoga a cada persona, integrando cuerpo, respiración y mente.",
+      "Disciplina inspirada en la tradición de Krishnamacharya que combina posturas físicas (asanas), control de la respiración (pranayama) y meditación para equilibrar el cuerpo y la mente, preservando y canalizando la fuerza vital o energía.",
     horarios: [
       "Lunes y miércoles · 10:30",
       "Lunes y miércoles · 14:30",
@@ -60,7 +60,7 @@ const actividades = [
     categoria: "Yoga",
     profesor: "Vanina y María Laura",
     descripcion:
-      "Una invitación a relajarse y divertirse mientras desarrollamos fuerza, coordinación, flexibilidad, equilibrio, conciencia corporal y emocional y autoconfianza.",
+      "Una invitación a relajarse y divertirse mientras desarrollamos fuerza, coordinación, flexibilidad, equilibrio, conciencia corporal y emocional favoreciendo la autoconfianza.",
     dias: "Miércoles",
     horario: "18:15",
     whatsapp: crearWhatsApp(
@@ -103,7 +103,7 @@ const actividades = [
   {
     disciplina: "Preparación para el nacimiento",
     categoria: "Preparación",
-    profesor: "Dina y otras",
+    profesor: "Licenciadas en Obstetricia",
     descripcion:
       "Un espacio para mujeres y parejas desde las 28 semanas de gestación, pensado para sentirse acompañadas, compartir el proceso y prepararse para el nacimiento.",
     dias: "Viernes",
