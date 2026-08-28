@@ -121,8 +121,8 @@ const actividades = [
     profesor: "Graciela",
     descripcion:
       "Una práctica grupal que invita a percibirnos y vincularnos de una manera más profunda, buscando el equilibrio entre lo individual y lo colectivo. No requiere saber bailar.",
-    dias: "Miércoles",
-    horario: "19:45",
+    dias: "Martes",
+    horario: "19:30",
     whatsapp: crearWhatsApp(
       "3424081106",
       "Biodanza",
