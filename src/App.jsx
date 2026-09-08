@@ -10,8 +10,12 @@ import Footer from "./components/Footer";
 import WhatsappButton from "./components/WhatsappButton";
 import Consultorios from "./components/Consultorios";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import LoginProfesional from "./components/LoginProfesional";
+import { supabase } from "./lib/supabase";
+import PanelProfesional from "./components/PanelProfesional";
 import AOS from "aos";
+
 
 function App() {
 
@@ -24,6 +28,40 @@ function App() {
     delay: 0,
   });
 }, []);
+
+const [usuarioProfesional, setUsuarioProfesional] = useState(null);
+
+useEffect(() => {
+  const cargarSesion = async () => {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    setUsuarioProfesional(session?.user ?? null);
+  };
+
+  cargarSesion();
+}, []);
+
+const esPanelProfesional =
+  window.location.pathname === "/profesionales";
+
+if (esPanelProfesional) {
+  if (!usuarioProfesional) {
+    return (
+      <LoginProfesional
+        onLogin={(user) => setUsuarioProfesional(user)}
+      />
+    );
+  }
+
+    return (
+      <PanelProfesional
+        usuario={usuarioProfesional}
+        onLogout={() => setUsuarioProfesional(null)}
+      />
+    );
+}
 
   return (
     <>
