@@ -20,9 +20,7 @@ function TurnoModal({ profesional, onClose }) {
 
   const [horarios, setHorarios] = useState([]);
   const [cargandoHorarios, setCargandoHorarios] = useState(false);
-
-  const [profesionalAusente, setProfesionalAusente] =
-    useState(false);
+  const [profesionalAusente, setProfesionalAusente] = useState(false);
 
   // =========================================================
   // BUSCAR PROFESIONAL
@@ -30,10 +28,21 @@ function TurnoModal({ profesional, onClose }) {
 
   useEffect(() => {
     const buscarProfesional = async () => {
+      const nombreProfesional =
+        profesional?.nombre || profesional?.profesional;
+
+      if (!nombreProfesional) {
+        console.error(
+          "No encontramos el nombre del profesional:",
+          profesional
+        );
+        return;
+      }
+
       const { data, error } = await supabase
         .from("profesionales")
-        .select("id, consultorio_id")
-        .eq("nombre", profesional.profesional)
+        .select("id, consultorio_id, nombre")
+        .eq("nombre", nombreProfesional)
         .single();
 
       if (error) {
@@ -45,7 +54,7 @@ function TurnoModal({ profesional, onClose }) {
       setConsultorioId(data.consultorio_id);
     };
 
-    if (profesional?.profesional) {
+    if (profesional) {
       buscarProfesional();
     }
   }, [profesional]);
@@ -58,26 +67,22 @@ function TurnoModal({ profesional, onClose }) {
     const cargarDisponibilidad = async () => {
       if (!fecha || !profesionalId || !consultorioId) {
         setHorarios([]);
-        setProfesionalAusente(false);
         return;
       }
 
       setCargandoHorarios(true);
       setHorario("");
-      setHorarios([]);
       setProfesionalAusente(false);
 
-      // =====================================================
+      // -------------------------------------------------------
       // 1. COMPROBAR AUSENCIA
-      // =====================================================
+      // -------------------------------------------------------
 
-      const {
-        data: estaAusente,
-        error: ausenciaError,
-      } = await supabase.rpc("profesional_ausente", {
-        p_profesional_id: profesionalId,
-        p_fecha: fecha,
-      });
+      const { data: ausente, error: ausenciaError } =
+        await supabase.rpc("profesional_ausente", {
+          p_profesional_id: profesionalId,
+          p_fecha: fecha,
+        });
 
       if (ausenciaError) {
         console.error(
@@ -90,18 +95,16 @@ function TurnoModal({ profesional, onClose }) {
         return;
       }
 
-      // Si el profesional bloqueó ese día,
-      // detenemos todo acá.
-      if (estaAusente) {
+      if (ausente) {
         setProfesionalAusente(true);
         setHorarios([]);
         setCargandoHorarios(false);
         return;
       }
 
-      // =====================================================
+      // -------------------------------------------------------
       // 2. OBTENER DÍA DE LA SEMANA
-      // =====================================================
+      // -------------------------------------------------------
 
       const [anio, mes, dia] = fecha.split("-").map(Number);
 
@@ -113,16 +116,17 @@ function TurnoModal({ profesional, onClose }) {
 
       const diaSemana = fechaLocal.getDay();
 
-      // Domingo o sábado
+      // Domingo = 0
+      // Sábado = 6
       if (diaSemana === 0 || diaSemana === 6) {
         setHorarios([]);
         setCargandoHorarios(false);
         return;
       }
 
-      // =====================================================
-      // 3. DISPONIBILIDAD SEMANAL
-      // =====================================================
+      // -------------------------------------------------------
+      // 3. BUSCAR DISPONIBILIDAD DEL PROFESIONAL
+      // -------------------------------------------------------
 
       const {
         data: disponibilidad,
@@ -148,9 +152,9 @@ function TurnoModal({ profesional, onClose }) {
         return;
       }
 
-      // =====================================================
-      // 4. HORARIOS OCUPADOS DEL CONSULTORIO
-      // =====================================================
+      // -------------------------------------------------------
+      // 4. BUSCAR HORARIOS OCUPADOS DEL CONSULTORIO
+      // -------------------------------------------------------
 
       const {
         data: ocupados,
@@ -178,9 +182,9 @@ function TurnoModal({ profesional, onClose }) {
         (item) => item.hora.slice(0, 5)
       );
 
-      // =====================================================
+      // -------------------------------------------------------
       // 5. GENERAR HORARIOS
-      // =====================================================
+      // -------------------------------------------------------
 
       const [horaInicio, minutoInicio] =
         disponibilidad.hora_inicio
@@ -225,7 +229,9 @@ function TurnoModal({ profesional, onClose }) {
             horaFormateada
           )
         ) {
-          opciones.push(horaFormateada);
+          opciones.push(
+            horaFormateada
+          );
         }
 
         minutosActuales += duracion;
@@ -256,13 +262,8 @@ function TurnoModal({ profesional, onClose }) {
       !nombre ||
       !telefono
     ) {
-      alert("Completá todos los campos.");
-      return;
-    }
-
-    if (profesionalAusente) {
       alert(
-        "El profesional no atiende en la fecha seleccionada."
+        "Completá todos los campos."
       );
       return;
     }
@@ -271,11 +272,18 @@ function TurnoModal({ profesional, onClose }) {
       await supabase.rpc(
         "solicitar_turno",
         {
-          p_profesional_id: profesionalId,
+          p_profesional_id:
+            profesionalId,
+
           p_fecha: fecha,
+
           p_hora: horario,
-          p_nombre_paciente: nombre,
-          p_telefono: telefono,
+
+          p_nombre_paciente:
+            nombre,
+
+          p_telefono:
+            telefono,
         }
       );
 
@@ -292,6 +300,14 @@ function TurnoModal({ profesional, onClose }) {
       ) {
         alert(
           "Ese horario acaba de ser ocupado. Por favor elegí otro."
+        );
+      } else if (
+        error.message?.includes(
+          "no atiende"
+        )
+      ) {
+        alert(
+          "El profesional no atiende en la fecha seleccionada."
         );
       } else {
         alert(
@@ -313,6 +329,15 @@ function TurnoModal({ profesional, onClose }) {
 
     onClose();
   };
+
+  // =========================================================
+  // NOMBRE PARA MOSTRAR
+  // =========================================================
+
+  const nombreProfesional =
+    profesional?.nombre ||
+    profesional?.profesional ||
+    "";
 
   // =========================================================
   // PANTALLA
@@ -359,7 +384,7 @@ function TurnoModal({ profesional, onClose }) {
           </p>
 
           <h2 className="mt-3 text-3xl font-semibold text-[var(--text)]">
-            {profesional?.profesional}
+            {nombreProfesional}
           </h2>
 
           <p className="mt-2 text-gray-500">
@@ -379,6 +404,7 @@ function TurnoModal({ profesional, onClose }) {
                 size={18}
                 className="text-[var(--sage)]"
               />
+
               Fecha
             </label>
 
@@ -386,7 +412,9 @@ function TurnoModal({ profesional, onClose }) {
               type="date"
               value={fecha}
               onChange={(e) =>
-                setFecha(e.target.value)
+                setFecha(
+                  e.target.value
+                )
               }
               required
               className="
@@ -407,19 +435,22 @@ function TurnoModal({ profesional, onClose }) {
                 size={18}
                 className="text-[var(--sage)]"
               />
+
               Horario
             </label>
 
             <select
               value={horario}
               onChange={(e) =>
-                setHorario(e.target.value)
+                setHorario(
+                  e.target.value
+                )
               }
               required
               disabled={
                 !fecha ||
-                cargandoHorarios ||
                 profesionalAusente ||
+                cargandoHorarios ||
                 horarios.length === 0
               }
               className="
@@ -447,16 +478,16 @@ function TurnoModal({ profesional, onClose }) {
                 )}
 
               {fecha &&
-                !cargandoHorarios &&
-                profesionalAusente && (
+                profesionalAusente &&
+                !cargandoHorarios && (
                   <option value="">
                     El profesional no atiende este día
                   </option>
                 )}
 
               {fecha &&
-                !cargandoHorarios &&
                 !profesionalAusente &&
+                !cargandoHorarios &&
                 horarios.length === 0 && (
                   <option value="">
                     No hay horarios disponibles
@@ -464,37 +495,39 @@ function TurnoModal({ profesional, onClose }) {
                 )}
 
               {fecha &&
-                !cargandoHorarios &&
                 !profesionalAusente &&
+                !cargandoHorarios &&
                 horarios.length > 0 && (
                   <>
                     <option value="">
                       Seleccionar horario
                     </option>
 
-                    {horarios.map((hora) => (
-                      <option
-                        key={hora}
-                        value={hora}
-                      >
-                        {hora}
-                      </option>
-                    ))}
+                    {horarios.map(
+                      (hora) => (
+                        <option
+                          key={hora}
+                          value={hora}
+                        >
+                          {hora}
+                        </option>
+                      )
+                    )}
                   </>
                 )}
             </select>
 
             {fecha &&
-              !cargandoHorarios &&
-              profesionalAusente && (
-                <p className="mt-2 text-sm font-medium text-amber-600">
-                  El profesional no atiende en la fecha seleccionada.
+              profesionalAusente &&
+              !cargandoHorarios && (
+                <p className="mt-2 text-sm text-gray-400">
+                  El profesional no atiende este día.
                 </p>
               )}
 
             {fecha &&
-              !cargandoHorarios &&
               !profesionalAusente &&
+              !cargandoHorarios &&
               horarios.length === 0 && (
                 <p className="mt-2 text-sm text-gray-400">
                   No hay horarios disponibles para esa fecha.
@@ -510,6 +543,7 @@ function TurnoModal({ profesional, onClose }) {
                 size={18}
                 className="text-[var(--sage)]"
               />
+
               Nombre y apellido
             </label>
 
@@ -517,7 +551,9 @@ function TurnoModal({ profesional, onClose }) {
               type="text"
               value={nombre}
               onChange={(e) =>
-                setNombre(e.target.value)
+                setNombre(
+                  e.target.value
+                )
               }
               placeholder="Ej: Juan Pérez"
               required
@@ -539,6 +575,7 @@ function TurnoModal({ profesional, onClose }) {
                 size={18}
                 className="text-[var(--sage)]"
               />
+
               Teléfono
             </label>
 
@@ -546,7 +583,9 @@ function TurnoModal({ profesional, onClose }) {
               type="tel"
               value={telefono}
               onChange={(e) =>
-                setTelefono(e.target.value)
+                setTelefono(
+                  e.target.value
+                )
               }
               placeholder="Ej: 342 555 1234"
               required
@@ -560,23 +599,25 @@ function TurnoModal({ profesional, onClose }) {
             />
           </div>
 
-          {/* ENVIAR */}
+          {/* BOTÓN */}
 
           <button
             type="submit"
             disabled={
+              !fecha ||
+              !horario ||
               profesionalAusente ||
               cargandoHorarios ||
               horarios.length === 0
             }
             className="
-              mt-3 w-full cursor-pointer
+              mt-3 w-full
               rounded-full
               bg-[var(--sage-dark)]
               px-6 py-4
               font-semibold text-white
-              shadow-md
-              transition-all duration-300
+              shadow-md transition-all
+              duration-300
               hover:-translate-y-1
               hover:shadow-lg
               disabled:cursor-not-allowed
