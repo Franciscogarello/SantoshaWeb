@@ -1,3 +1,4 @@
+
 const crearWhatsApp = (numero, especialidad, profesional) => {
   const mensaje = `Hola ${profesional}, vi tu contacto de ${especialidad} en la web de Santosha y quería hacer una consulta.`;
 
@@ -47,11 +48,11 @@ const consultorios = [
 
   {
     especialidad: "Terapias Holísticas",
-    profesional: "Paola Peralta",
+    profesional: "Celia Fernández",
     whatsapp: crearWhatsApp(
-      "3425242838",
+      "3426293621",
       "Terapias Holísticas",
-      "Paola"
+      "Celia"
     ),
   },
 ];
