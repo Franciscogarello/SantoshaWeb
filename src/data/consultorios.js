@@ -55,6 +55,15 @@ const consultorios = [
       "Celia"
     ),
   },
+  {
+    especialidad: "Medicina Tradicional China",
+    profesional: "Adrián López",
+    whatsapp: crearWhatsApp(
+      "3415997969",
+      "Medicina Tradicional China",
+      "Adrián"
+    ),
+  },
 ];
 
 export default consultorios;

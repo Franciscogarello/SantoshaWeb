@@ -45,28 +45,13 @@ const actividades = [
     descripcion:
       "Una práctica accesible y adaptada que, mediante movimientos suaves y diferentes elementos, favorece la flexibilidad, movilidad, equilibrio, fuerza y coordinación.",
     horarios: [
-      "Lunes y miércoles · 16:30",
+      "Lunes y miércoles · 17:00",
       "Martes y jueves · 10:00",
     ],
     whatsapp: crearWhatsApp(
       "3424084322",
       "Yoga adultos mayores",
       "Andrea y Mariela"
-    ),
-  },
-
-  {
-    disciplina: "Yoga niños",
-    categoria: "Yoga",
-    profesor: "Vanina y María Laura",
-    descripcion:
-      "Una invitación a relajarse y divertirse mientras desarrollamos fuerza, coordinación, flexibilidad, equilibrio, conciencia corporal y emocional favoreciendo la autoconfianza.",
-    dias: "Miércoles",
-    horario: "18:15",
-    whatsapp: crearWhatsApp(
-      "3425053004",
-      "Yoga niños",
-      "Vanina y María Laura"
     ),
   },
 

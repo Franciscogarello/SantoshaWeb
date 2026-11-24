@@ -52,13 +52,14 @@ function Consultorios() {
             className="mt-14 overflow-hidden rounded-[32px] border border-black/5 bg-[var(--cream)] shadow-lg"
           >
             {consultorios.map((consultorio, index) => {
-              const esCelia =
-                consultorio.profesional
-                  ?.trim()
-                  .toLocaleLowerCase("es") === "celia fernández" ||
-                consultorio.profesional
-                  ?.trim()
-                  .toLocaleLowerCase("es") === "celia fernandez";
+              const soloWhatsApp = [
+                "celia fernández",
+                "celia fernandez",
+                "adrián lópez",
+                "adrian lopez",
+              ].includes(
+                consultorio.profesional?.trim().toLocaleLowerCase("es")
+              );
 
               return (
                 <div
@@ -87,7 +88,7 @@ function Consultorios() {
                         {consultorio.profesional}
                       </p>
 
-                      {esCelia && (
+                      {soloWhatsApp && (
                         <p className="mt-1 text-sm text-[var(--sage-dark)]">
                           Atención con turnos programados
                         </p>
@@ -96,7 +97,7 @@ function Consultorios() {
                   </div>
 
                   <div className="flex flex-wrap gap-3">
-                    {!esCelia && (
+                    {!soloWhatsApp && (
                       <button
                         type="button"
                         onClick={() =>
@@ -114,13 +115,9 @@ function Consultorios() {
                       </button>
                     )}
 
-                    {(esCelia || consultorio.whatsapp) && (
-                      <a
-                        href={
-                          esCelia
-                            ? "https://wa.me/5493426293621?text=Hola%20Celia%2C%20te%20escribo%20desde%20Santosha%20para%20consultar%20por%20un%20turno."
-                            : consultorio.whatsapp
-                        }
+                      {consultorio.whatsapp && (
+                        <a
+                          href={consultorio.whatsapp}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`
@@ -128,14 +125,14 @@ function Consultorios() {
                           px-5 py-2.5 font-medium
                           transition-all duration-300
                           ${
-                            esCelia
+                            soloWhatsApp
                               ? "bg-[var(--sage-dark)] text-white hover:-translate-y-0.5 hover:shadow-md"
                               : "border border-[var(--sage)] text-[var(--sage-dark)] hover:bg-[var(--sage-dark)] hover:text-white"
                           }
                         `}
                       >
                         <MessageCircle size={18} />
-                        {esCelia
+                        {soloWhatsApp
                           ? "Consultar disponibilidad"
                           : "WhatsApp"}
                       </a>
